@@ -74,6 +74,9 @@ class GraphState(MessagesState):
 class InputSchema(TypedDict):
     company_name: str
 
+class OutputSchema(TypedDict):
+    info: Info
+
 class Good(BaseModel):
     reason: str
     good: bool
@@ -120,7 +123,7 @@ def route_after_checker(state) -> Literal[END, "call_model"]:
         return END
     return "call_model"
 
-graph = StateGraph(GraphState)
+graph = StateGraph(GraphState, input=InputSchema, output=InputSchema)
 graph.add_node(call_model)
 graph.add_node(call_checker)
 graph.add_node(bad_agent)

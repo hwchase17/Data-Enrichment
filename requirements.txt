@@ -1,4 +1,4 @@
-langgraph
+langgraph>=0.1.15
 langchain_community
 langchain_anthropic
 tavily-python
